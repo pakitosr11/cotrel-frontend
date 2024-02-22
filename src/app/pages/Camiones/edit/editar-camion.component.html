@@ -1,0 +1,80 @@
+<nb-card>
+  <nb-card-header>
+
+    <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex mr-5">
+                <h2 class="fuente">Editar Camión</h2>
+            </div>
+    </div>
+    </nb-card-header>
+<div class="card-body">
+    <form #myForm2="ngForm" novalidate>
+        <div class="form-group mb-3" style="float: left; width: 45%;">
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+            <input type="text" [(ngModel)] = "camion.marca"  name="marca" id="marca" class="form-control" required #marca="ngModel">
+            <div *ngIf="myForm2.submitted && marca.invalid" class="text-danger">
+              <div *ngIf="marca.errors.required">
+                La marca es obligatoria.
+              </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" [(ngModel)] = "camion.modelo"  name="modelo" id="modelo" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="matricula">Matrícula:</label>
+                <input type="text" [(ngModel)] = "camion.matricula"  name="matricula" id="matricula" class="form-control" required #matricula="ngModel">
+                <div *ngIf="myForm2.submitted && matricula.invalid" class="text-danger">
+                  <div *ngIf="matricula.errors.required">
+                    La matrícula es obligatoria.
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="fechaCompra">Fecha compra:</label>
+            <input type="date" [(ngModel)] = "fechaCompraFormateada"  name="fechaCompra" id="fechaCompra" class="form-control" required #fechaCompra="ngModel">
+            <div *ngIf="myForm2.submitted && fechaCompra.invalid" class="text-danger">
+              <div *ngIf="fechaCompra.errors.required">
+                La fecha commpra es obligatoria.
+              </div>
+            </div>
+            </div>
+        </div>
+        <div class="form-group mb-3" style="float: right; width: 45%;">
+         <div class="form-group">
+              <label for="fechaMatriculacion">Fecha matriculación:</label>
+              <input type="date" [(ngModel)] = "fechaMatriculacionFormateada"  name="fechaMatriculacion" id="fechaMatriculacion" class="form-control" required #fechaMatriculacion="ngModel">
+              <div *ngIf="myForm2.submitted && fechaMatriculacion.invalid" class="text-danger">
+                <div *ngIf="fechaMatriculacion.errors.required">
+                  La fecha matriculación es obligatoria.
+                </div>
+              </div>
+          </div>
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" [(ngModel)] = "camion.color"  name="color" id="color" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="conductorSeleccionado">Selecciona un conductor:</label>
+          <select id="conductorSeleccionado" [(ngModel)]="conductorSeleccionado" name="conductorSeleccionado" class="form-control">
+            <option value="">Selecciona un conductor...</option>
+            <option *ngFor="let conductor of conductores" [value]="conductor.id">{{ conductor.nombre }} {{ conductor.apellido1 }} {{ conductor.apellido2 }}</option>
+          </select>
+        </div>
+        </div>
+    
+    <div class="w-100">
+        <div class="d-flex w-100 justify-content-between">
+                <div class="d-flex mr-5">
+                    <button type="button" class="btn btn-danger p-2 px-3 fuente" (click)="cancelar()">Cancelar</button>
+                </div>
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-success p-2 px-3 fuente" (click) = "Actualizar(myForm2, camion)">Guardar</button>
+                </div>
+            </div>
+    </div>
+  </form>
+  </div>
+</nb-card>

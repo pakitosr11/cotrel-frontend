@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+  min-width: 500px;
+
+}
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
+table th {
+  text-align: center;
+}
+table td {
+  text-align: center;
+}
+.mat-form-field {
+  font-size: 12px;
+  width: 60%;
+  font-weight: bold;
+}
+.form-control {
+  border: 1px solid #ccc !important;
+  text-align: left;
+  width: 55%;
+}
+
+
+
